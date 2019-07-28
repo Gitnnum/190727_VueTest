@@ -11,7 +11,7 @@
       background: blue;
     }
     .classC {
-      font-size: 20px;
+      font-size: 40px;
     }
   </style>
 </head>
@@ -32,14 +32,29 @@
 
 <div id="demo">
   <h2>1. class绑定: :class='xxx'</h2>
-
+  <p class="classC" :class="myClass">xxx是字符串</p>
+  <p :class='{classA:hasA,classB:hasB}'>xxx是对象</p>
+  <p :class="['classA','classB']">xxx是数组</p>
   <h2>2. style绑定</h2>
-
+  <button @click='update' >切换</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+ const vm = new Vue({
+   data:{
+     myClass:'classA',
+     hasA:true,
+     hasB:true
+   },
+   methods: {
+     update(){
+       this.hasA=!this.hasA,
+       this.hasB=!this.hasB
+     }
+   },
+ })
+ vm.$mount('#demo')
 </script>
 </body>
 </html>
