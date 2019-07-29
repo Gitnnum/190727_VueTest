@@ -36,6 +36,7 @@
   <p :class='{classA:hasA,classB:hasB}'>xxx是对象</p>
   <p :class="['classA','classB']">xxx是数组</p>
   <h2>2. style绑定</h2>
+  <p :style="{color:activeColor,fontSize:fontSize+'px'}">style 绑定</p>
   <button @click='update' >切换</button>
 </div>
 
@@ -45,12 +46,16 @@
    data:{
      myClass:'classA',
      hasA:true,
-     hasB:true
+     hasB:true,
+     activeColor:'red',
+     fontSize:20
    },
    methods: {
      update(){
        this.hasA=!this.hasA,
-       this.hasB=!this.hasB
+       this.hasB=!this.hasB,
+       this.activeColor='green',
+       this.fontSize = 30
      }
    },
  })

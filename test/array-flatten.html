@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        Array.prototype.flatten = function(){
+            return this.reduce((pre,item)=>{
+                // if(Array.isArray(item)){
+                //     pre = pre.concat(item.flatten())
+                // }else{
+                //     pre = pre.concat(item)
+                // }
+                // return pre
+                return pre.concat(Array.isArray(item)? item.flatten(item):item)
+            },[])
+           
+        }
+        Array.prototype.flatten2 = function(){
+            let arr = [].concat(...this)
+            while (arr.some(item => Array.isArray(item))){
+                arr = [].concat(...arr)
+            }
+            return arr
+        }
+        let arr = [1,[2,[3,4]]]
+        const result1 = arr.flatten()
+        const result2 = arr.flatten2()
+        console.log(result1)
+        console.log(result2)
+    </script>
+</html>
